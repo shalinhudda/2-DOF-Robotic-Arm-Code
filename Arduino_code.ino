@@ -46,10 +46,7 @@ void loop() {
 void motor () {
   
   // pwmOutput = 255 correspond to 100% duty cycle
- 
-
-  Serial.println (encoder0Pos);
-   /*
+   
   voltage = analogRead(A4);
   voltage = voltage*(5.00/1023.00);
   
@@ -61,7 +58,6 @@ void motor () {
   Serial.println ("");
  
  
-*/
  /*
  if(encoder0Pos >= 200) {
  digitalWrite(in1, LOW);
@@ -79,8 +75,9 @@ digitalWrite(in1, HIGH);
 
 // calculates the relative angle at which the motor's shaft is
 void encoder () {
-  angle = (encoder0Pos/4.0)*3.6;
-  //Serial.println(encoder0Pos);
+  if((encoder0Pos % 4) == 0) {
+  	angle = (encoder0Pos/4.0)*3.6;
+  }
 }
 
 
